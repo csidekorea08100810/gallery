@@ -39,7 +39,7 @@
 		<link rel="stylesheet" type="text/css" href="{{ url('css/jquery.tagsinput.css') }}" />
 	</head>
 	<body>
-		<!-- @include('layouts/tag-header')
+		 @include('layouts/tag-header')
 		<div class="wrap_main cf" id="pjax-container">
 			@yield('content')
 		</div>
@@ -53,6 +53,6 @@
 					<li><p>COPYRIGHT 2016 © C.SIDE INC. ALL RIGHTS RESERVED.</p></li>	
 				</ul>
 			</div>
-		</div> -->
+		</div>
 	</body>
 </html>
