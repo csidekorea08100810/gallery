@@ -114,7 +114,6 @@ class AuthController extends Controller
                 'image' => $data['image'],
                 'intro' => $data['introduction'],
                 'phone' => $data['p_num1'].$data['p_num2'].$data['p_num3'],
-                'recent_articles' => '*,*,*,*,*,*,*,*',
             ]);
         }
         
