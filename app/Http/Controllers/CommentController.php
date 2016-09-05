@@ -33,26 +33,6 @@ class CommentController extends Controller
 		$comment = new Comment;
 		$comment->article_id = $article_id;
 		$comment->name = $request->name;
-
-		$mention_name_array = array();
-		foreach (array_filter(explode(',',$request->mention)) as $mention_name) {
-			if (strpos($request->content, $mention_name)) {
-				array_push($mention_name_array, $mention_name);
-			}
-		}
-		
-		$comment->mention = implode(',', $mention_name_array);
-
-		$mention_id = User::where('deleted', false)
-					->whereIn('name', array_filter($mention_name_array))
-					->get();
-
-		$mention = array();
-		foreach($mention_id as $user) {
-			array_push($mention, $user->id);
-		}
-
-		$comment->mention_id = implode(',', $mention);
 		$content = $request->content;
 		$comment->secret = false;
 		$comment->deleted = false;
