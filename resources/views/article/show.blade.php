@@ -118,6 +118,7 @@
 			<div class="box-write">
 				<form id="form-comment" action="{{ url('/articles/'.$article->id.'/comments') }}" method="post" {{ auth()->guest() ? 'disabled' : '' }}>
 					<input type="hidden" name="csrf-token" value="{{ csrf_token() }}">
+					<input type="hidden" name="mention" value="">
 					@if (!auth()->guest())
 						<input type="hidden" name="name" value="{{ auth()->user()->name }}">
 					@endif
@@ -152,6 +153,7 @@
 					@each('comment/_comment', $article->comments->reverse(), 'comment')
 				</ul>
 			</div>
+			@include('comment.mention')
 		</div>
 	</div>
 	<div class="box-remote">
