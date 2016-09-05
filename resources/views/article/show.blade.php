@@ -43,7 +43,7 @@
 		<div class="box-act">
 			<div class="box-tag">
 				@foreach(explode(',', $article->tag) as $tag)
-					<a href="#">#{{ $tag }}</a>
+					<a href="{{ url('/search?search_query='.$tag) }}">#{{ $tag }}</a>
 				@endforeach
 			</div>
 			<div class="box-left">
