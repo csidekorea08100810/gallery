@@ -48,7 +48,8 @@
                     for (i in settings.queryBy) {
                         if (itemProps[settings.queryBy[i]]) {
                             var item = itemProps[settings.queryBy[i]].toLowerCase(),
-                                usernames = (this.query.toLowerCase()).match(new RegExp(settings.delimiter + '\\w+', "g")),
+                                // usernames = (this.query.toLowerCase()).match(new RegExp(settings.delimiter + '\\w+', "g")),
+                                usernames = (this.query.toLowerCase()).match(new RegExp(settings.delimiter + '\\S+', "g")),
                                 j;
                             if ( !! usernames) {
                                 for (j = 0; j < usernames.length; j++) {
@@ -80,7 +81,26 @@
                     	data = textBefore + settings.delimiter + item + textAfter;
                     	
                     this.tempQuery = data;
+                    // -------- 2016. 9 .5 수정 --------
+                    inputMention = $('input[name=mention]');
+                    mentionData = inputMention.attr('value');
+                    mentionArray = mentionData.split(',');
+                    
+                    space = '';
+                    mentionArray = $.grep(mentionArray, function(value) {
+                        return value != space;
+                    });
 
+                    mentionArray.push(item);
+                    inputMention.attr('value',mentionArray);
+                    console.log(mentionData);
+
+                    // if (mentionData.length) {
+                    //     $('input[name=mention]').attr('value', mentionData+','+item);
+                    // } else {
+                    //     $('input[name=mention]').attr('value', item);
+                    // }
+                    // -------- 2016. 9 .5 수정 --------
                     return data;
                 },
                 _sorter = function(items) {
