@@ -10,7 +10,6 @@ $(document).on('submit', '#form-comment', function() {
 	var csrfToken = $(this).find('[name=csrf-token]').val();
 	var name = $(this).find('[name=name]').val();
 	var input = $(this).find('textarea');
-	var mention = $(this).find('[name=mention]').val();
 	var content = input.val();
 
 	if (!content) {
@@ -27,12 +26,15 @@ $(document).on('submit', '#form-comment', function() {
 		data:{
 			_token: csrfToken,
 			name: name,
-			mention: mention,
 			content: content
 		}
 	}).done(function (data) {
 		var comment = $(data).prependTo('.comments').hide().fadeIn(300);
+		// $('body').animate({
+		// 	scrollTop: comment.offset().top - $(window).height() * 0.3
+		// }, 500);
 		form.get(0).reset();
+
 	}).error(function(xhr) {
 		if (xhr.responseJSON && xhr.responseJSON.errors) {
 			modalOpen('ok',xhr.responseJSON.errors[0]);
@@ -96,3 +98,4 @@ $(document).on("click", ".btn-comment-report", function() {
 	modalDataSet(report_content_id, reporter_id);
 	return false;
 });
+

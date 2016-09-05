@@ -137,12 +137,6 @@ class ArticleController extends Controller
 
     function works(Request $request) 
     {
-         $articles = Article::where('deleted', false)
-                            ->orderBy('created_at', 'desc')
-                            ->paginate(25);
-                    $articles->setPath('works');     
-                    $category = '';
-                    
         if (isset($request->cate)) {
             switch ($request->cate) {
 
@@ -200,6 +194,12 @@ class ArticleController extends Controller
                     $category = 'like';
                     break;    
             }
+        } else {
+            $articles = Article::where('deleted', false)
+                            ->orderBy('created_at', 'desc')
+                            ->paginate(25);
+                    $articles->setPath('works');     
+                    $category = '';
         }
         
         return view('gallery.works', [
@@ -269,7 +269,7 @@ class ArticleController extends Controller
     function show($id) 
     {
         $article = Article::with('comments.user')->where('deleted', false)->find($id);        
-    	$users = User::where('deleted',false)->get();
+    	$users = User::get();
 
         if (!auth()->guest()) {
             $writer = User::where('name', auth()->user()->name)->first();
