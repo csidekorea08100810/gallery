@@ -80,7 +80,11 @@ class MemberController extends Controller
             
 
         // 작성한 게시물 개수
-        $count_aritlces = $user->upload_articles;
+        $my_aritlces = Article::where('deleted', false)
+                                ->where('user_id', $user_id)
+                                ->get();
+
+        $count_aritlces = count($my_aritlces);
 
         // 좋아요 게시물 개수
         $count_like = count($like_articles);
@@ -157,8 +161,12 @@ class MemberController extends Controller
             
 
         // 작성한 게시물 개수
-        $count_aritlces = $user->upload_articles;
+        $my_aritlces = Article::where('deleted', false)
+                                ->where('user_id', $user_id)
+                                ->get();
 
+        $count_aritlces = count($my_aritlces);
+        
         // 좋아요 게시물 개수
         $count_likes = Article::where('like', 'LIKE', '%*'.$user->name.'*%')
                             ->where('deleted', false)

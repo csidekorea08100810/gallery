@@ -74,11 +74,13 @@ body {position:relative; padding:75px 0 0; background:#fbfbfb;}
 .wrap-header .box-header .ul-user .li-search button img {width:14px;}
 .wrap-header .box-header .ul-user .li-global {width:40px; padding:0 0 0 15px; line-height:68px; text-align:center; position:relative;}
 .wrap-header .box-header .ul-user .li-global .btn-alarm {display:block;}
+.wrap-header .box-header .ul-user .li-global .btn-alarm.check .box-count {display:none;}
 .wrap-header .box-header .ul-user .li-global i {font-size:25px; color:#d4d4d4;}
 .wrap-header .box-header .ul-user .li-global .box-count {position:absolute; bottom:22px; right:4px; display:block; width:14px; height:14px; padding:2px; line-height:14px; text-align:center; background:#ed642c; border-radius:50%;}
 .wrap-header .box-header .ul-user .li-global .count {font-size:12px; color:#fff; line-height:1;}
-.wrap-header .box-header .ul-user .li-global .ul-alarm {z-index:3; position:absolute; top:60px; left:-130px; display:none; width:300px; max-height:400px; overflow:scroll; border:1px solid #d4d4d4; background:#fff; line-height:1.5; box-shadow:3px 3px 3px rgba(0,0,0,0.05);}
+.wrap-header .box-header .ul-user .li-global .ul-alarm {z-index:3; position:absolute; top:60px; left:-130px; display:none; width:300px; max-height:400px; overflow:scroll; border:1px solid #d4d4d4; border-bottom:2px solid #d4d4d4; background:#fff; line-height:1.5; box-shadow:3px 3px 3px rgba(0,0,0,0.05);}
 .wrap-header .box-header .ul-user .li-global .ul-alarm li {border-bottom:1px solid #d4d4d4;}
+.wrap-header .box-header .ul-user .li-global .ul-alarm li:last-child {border-bottom:none;}
 .wrap-header .box-header .ul-user .li-global .ul-alarm li a {display:block; min-height:30px; max-height:54px; padding:10px 20px 10px 10px; text-align:left; background:#fff;}
 .wrap-header .box-header .ul-user .li-global .ul-alarm li a.checked {background:#f4f4f4;}
 .wrap-header .box-header .ul-user .li-global .ul-alarm li a.read, .wrap-header .box-header .ul-user .li-global .ul-alarm li a:hover {background:#f4f4f4;}

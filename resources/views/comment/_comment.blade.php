@@ -34,7 +34,7 @@ if ((int)$diff->format('%i') > 0) {
 		<div class="comment-content">
 			<?php $content = e($comment->content); ?>
 			@foreach (array_combine(array_filter(explode(',',$comment->mention)), array_filter(explode(',',$comment->mention_id))) as $mention => $mention_id)
-				<?php $content = str_replace('@'.$mention, "<a class='mention' href='".url('/userpage/'.$mention_id)."'>$mention</a>", $content); ?>
+				<?php $content = preg_replace('/@'.$mention.'\b/', "<a class='mention' href='".url('/userpage/'.$mention_id)."'>$mention</a>", $content); ?>
 			@endforeach 
 			{!! nl2br($content) !!}
 			<div class="box-report">

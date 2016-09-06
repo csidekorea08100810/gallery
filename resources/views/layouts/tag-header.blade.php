@@ -41,12 +41,14 @@
 				</li>
 			@else
 				<li class="li-nav li-global">
-					<a class="btn-alarm" href="#">
+					<a class="btn-alarm" href="{{ url('/alarms/'.auth()->user()->id.'/alarm_check') }}" data-skip-pjax data-id="auth()->user()->id" data-csrf-token="{{ csrf_token() }}">
 						<i class="fa fa-globe" aria-hidden="true"></i>
 						@if (count(auth()->user()->alarms->where('checked',0)))
-						<div class="box-count">
-							<span class="count">{{ count(auth()->user()->alarms->where('checked',0)) }}</span>
-						</div>
+							@if (auth()->user()->alarm_check == 0)
+								<div class="box-count">
+									<span class="count">{{ count(auth()->user()->alarms->where('checked',0)) }}</span>
+								</div>
+							@endif
 						@endif
 					</a>
 					<ul class="ul-alarm">

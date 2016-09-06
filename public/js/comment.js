@@ -32,6 +32,7 @@ $(document).on('submit', '#form-comment', function() {
 		}
 	}).done(function (data) {
 		var comment = $(data).prependTo('.comments').hide().fadeIn(300);
+		$('input[name=mention]').val('');
 		form.get(0).reset();
 	}).error(function(xhr) {
 		if (xhr.responseJSON && xhr.responseJSON.errors) {

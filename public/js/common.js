@@ -140,7 +140,21 @@ $(document).on("focus", ".form-report textarea", function(){
 
 // ----- 알람 -----
 $(document).on("click", ".btn-alarm", function(){
+	var id = $(this).data('id');
+	var url = $(this).attr('href');
+	var csrfToken = $(this).data('csrfToken');
+
 	$('.ul-alarm').toggle();
+	$.ajax({
+		method: 'post',
+		url: url,
+		data: {
+			id: id,
+			_token: csrfToken
+		}
+	}).done(function(){
+		$('.btn-alarm').addClass('check');
+	});
 	return false;
 });
 

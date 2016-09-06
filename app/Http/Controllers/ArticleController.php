@@ -16,6 +16,8 @@ use App\User;
 
 use Validator;
 
+use App\Alarm;
+
 // import the Intervention Image Manager Class
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -330,8 +332,22 @@ class ArticleController extends Controller
             $article->save();
 
             $user->liked = $user->liked+1;
+            $user->alarm_check = 0;
             $user->save();
             // $data = array_slice(explode(',', $article->like), 0, 1);
+        }
+
+        // Alarm : like
+        if (auth()->user()->id != $article->user->id) {
+            $alarm = new Alarm;
+            $alarm->article_id = $article->id;
+            $alarm->mention_id = auth()->user()->id;
+            $alarm->mention_name = auth()->user()->name;
+            $alarm->user_id = $article->user->id;
+            $alarm->image = auth()->user()->image;
+            $alarm->type = 'like';
+            $alarm->url = url('/articles/'.$article->id);
+            $alarm->save();    
         }
 
         return count($article->like);

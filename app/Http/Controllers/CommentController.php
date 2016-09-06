@@ -37,12 +37,15 @@ class CommentController extends Controller
 		$comment->name = $request->name;
 
 		$mention_name_array = array();
+		
 		foreach (array_filter(explode(',',$request->mention)) as $mention_name) {
 			if (strpos($request->content, $mention_name)) {
 				array_push($mention_name_array, $mention_name);
 			}
 		}
-		
+
+		$mention_name_array = array_unique($mention_name_array);
+
 		$comment->mention = implode(',', $mention_name_array);
 
 		$mention_id = User::where('deleted', false)
@@ -79,7 +82,11 @@ class CommentController extends Controller
 
 				$alarm->image = auth()->user()->image;
 				$alarm->url = url('/articles/'.$article_id);
-				$alarm->save();	
+				$alarm->save();
+
+				$alarm_user = User::find($mention_id);
+				$alarm_user->alarm_check = 0;
+				$alarm_user->save();
 			}	
 		}
 
@@ -96,6 +103,10 @@ class CommentController extends Controller
 			$alarm->image = auth()->user()->image;
 			$alarm->url = url('/articles/'.$article_id);
 			$alarm->save();		
+
+			$alarm_user = User::find($article->user->id);
+			$alarm_user->alarm_check = 0;
+			$alarm_user->save();
 		}
 		
 		return view('comment/_comment', [
