@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\User;
 
+use App\Alarm;
+
 use App\Comment;
 
 use App\Article;
@@ -80,7 +82,11 @@ class MemberController extends Controller
             
 
         // 작성한 게시물 개수
-        $count_aritlces = $user->upload_articles;
+        $my_aritlces = Article::where('deleted', false)
+                                ->where('user_id', $user_id)
+                                ->get();
+
+        $count_aritlces = count($my_aritlces);
 
         // 좋아요 게시물 개수
         $count_like = count($like_articles);
@@ -157,8 +163,12 @@ class MemberController extends Controller
             
 
         // 작성한 게시물 개수
-        $count_aritlces = $user->upload_articles;
+        $my_aritlces = Article::where('deleted', false)
+                                ->where('user_id', $user_id)
+                                ->get();
 
+        $count_aritlces = count($my_aritlces);
+        
         // 좋아요 게시물 개수
         $count_likes = Article::where('like', 'LIKE', '%*'.$user->name.'*%')
                             ->where('deleted', false)
@@ -201,12 +211,30 @@ class MemberController extends Controller
             $followed_user->follower_count = count($follower);
             $followed_user->save();
 
+            $alarms = Alarm::where('mention_id', auth()->user()->id)
+                        ->where('user_id', $request->follow_id)
+                        ->where('type', 'follow')
+                        ->get();
+
+            if (count($alarms) == 0) {
+                $user = User::find($request->follow_id);
+                $user->alarm_check = 0;
+                $user->save();
+
+                $alarm = new Alarm;
+                $alarm->mention_id = auth()->user()->id;
+                $alarm->mention_name = auth()->user()->name;
+                $alarm->image = auth()->user()->image;
+                $alarm->user_id = $request->follow_id;
+                $alarm->type = 'follow';
+                $alarm->url = url('/userpage/'.auth()->user()->id);
+                $alarm->save();
+            }
+            
             return 'success';    
         } else {
             return 'failed';    
         }
-
-        
     }
 
     function followcancel(Request $request) {

@@ -359,6 +359,7 @@ class ComposerStaticInit6b6db1ce4e925f9faad57fde31c59f0e
     );
 
     public static $classMap = array (
+        'AddAlarmToUsers' => __DIR__ . '/../..' . '/database/migrations/2016_09_06_163147_add_alarm_to_users.php',
         'AddAuthToUser' => __DIR__ . '/../..' . '/database/migrations/2016_08_02_074527_add_auth_to_user.php',
         'AddCategoryToArticles' => __DIR__ . '/../..' . '/database/migrations/2016_08_04_010317_add_category_to_articles.php',
         'AddFollowToUsers' => __DIR__ . '/../..' . '/database/migrations/2016_08_17_191212_add_follow_to_users.php',
@@ -377,6 +378,7 @@ class ComposerStaticInit6b6db1ce4e925f9faad57fde31c59f0e
         'AddWriterToArticles' => __DIR__ . '/../..' . '/database/migrations/2016_08_11_151401_add_writer_to_articles.php',
         'ChangeEmailToUsers' => __DIR__ . '/../..' . '/database/migrations/2016_08_19_185850_change_email_to_users.php',
         'ChangeWriterkeyToArticles' => __DIR__ . '/../..' . '/database/migrations/2016_08_12_121319_change_writerkey_to_articles.php',
+        'CreateAlarmsTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_05_190534_create_alarms_table.php',
         'CreateArticleTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_02_024913_create_article_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateReportsTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_24_151744_create_reports_table.php',

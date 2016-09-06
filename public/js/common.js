@@ -138,5 +138,70 @@ $(document).on("focus", ".form-report textarea", function(){
 });
 // ----- 신고하기 -----
 
+// ----- 알람 -----
+$(document).on("click", ".btn-alarm", function(){
+
+	if (!$(this).hasClass('check')) {
+		var id = $(this).data('id');
+		var url = $(this).attr('href');
+		var csrfToken = $(this).data('csrfToken');
+
+		$.ajax({
+			method: 'post',
+			url: url,
+			data: {
+				id: id,
+				_token: csrfToken
+			}
+		}).done(function(){
+			$('.btn-alarm').addClass('check');
+		});
+	}
+	
+	$('.box-alarm-list').toggle();
+	return false;
+});
+
+$(document).on("click", ".li-alarm a", function(){
+
+	var id = $(this).data('id');
+	var url = $(this).data('url');
+	var link = $(this).attr('href');
+	var csrfToken = $(this).data('csrfToken');
+
+	$.ajax({
+		method:'post',
+		url: url,
+		data: {
+			id: id,
+			_token: csrfToken
+		}
+	}).done(function() {
+		$(this).addClass('checked');
+		location.replace(link);
+	});
+
+	return false;
+});
+
+
+$(document).on("click", ".btn-read-alarm", function(){
+	
+	if ($('.li-alarm a').not('.checked').length) {
+		var url = $(this).attr('href');
+		var csrfToken = $(this).data('csrfToken');	
+
+		$.ajax({
+			method: 'post',
+			url: url,
+			data: {
+				_token: csrfToken
+			}
+		}).done(function(){
+			$('.li-alarm a').addClass('checked');
+		});
+	}
+	return false;
+});
 
 

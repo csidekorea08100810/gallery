@@ -34,6 +34,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Comment');
     }
 
+    public function alarms()
+    {
+        return $this->hasMany('App\Alarm');
+    }
+
     public function social()
     {
         return $this->hasOne('App\SocialAccount');

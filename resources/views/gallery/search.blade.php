@@ -3,7 +3,7 @@
 @endsection
 @section('content')
 <div class="wrap-index wrap-artist">
-	<h2 class="h2-search">키워드 '<span class="point">{{ $query }}</span>'로 검색한 결과입니다.</h2>
+	<h2 class="h2-search">키워드 '<span class="point">{{ $query }}</span>'의 검색 결과입니다.</h2>
 	@if (count($tag_articles) == 0 && count($articles) == 0 && count($users) == 0)
 		<h2 class="none">
 			<img src="{{ url('/images/smile.png') }}" alt="">

@@ -12,6 +12,8 @@ use App\Comment;
 
 use App\User;
 
+use App\Alarm;
+
 use Validator;
 
 class CommentController extends Controller
@@ -35,12 +37,15 @@ class CommentController extends Controller
 		$comment->name = $request->name;
 
 		$mention_name_array = array();
+		
 		foreach (array_filter(explode(',',$request->mention)) as $mention_name) {
 			if (strpos($request->content, $mention_name)) {
 				array_push($mention_name_array, $mention_name);
 			}
 		}
-		
+
+		$mention_name_array = array_unique($mention_name_array);
+
 		$comment->mention = implode(',', $mention_name_array);
 
 		$mention_id = User::where('deleted', false)
@@ -61,6 +66,49 @@ class CommentController extends Controller
 
 		$comment->save();
 
+		// Alarm : mention
+		$article = Article::find($article_id);
+
+		if (count($mention)) {
+			foreach ($mention as $mention_id) {
+				if ($article->user->id == $mention_id) continue;
+				$alarm = new Alarm;
+				$alarm->article_id = $article_id;
+				$alarm->type = 'mention';
+
+				$alarm->mention_id = auth()->user()->id;
+				$alarm->mention_name = auth()->user()->name;
+				$alarm->user_id = $mention_id;
+
+				$alarm->image = auth()->user()->image;
+				$alarm->url = url('/articles/'.$article_id);
+				$alarm->save();
+
+				$alarm_user = User::find($mention_id);
+				$alarm_user->alarm_check = 0;
+				$alarm_user->save();
+			}	
+		}
+
+		// Alarm : comment
+		if (auth()->user()->id != $article->user->id) {
+			$alarm = new Alarm;
+			$alarm->article_id = $article_id;
+			$alarm->type = 'comment';
+
+			$alarm->mention_id = auth()->user()->id;
+			$alarm->mention_name = auth()->user()->name;
+			$alarm->user_id = $article->user->id;
+
+			$alarm->image = auth()->user()->image;
+			$alarm->url = url('/articles/'.$article_id);
+			$alarm->save();		
+
+			$alarm_user = User::find($article->user->id);
+			$alarm_user->alarm_check = 0;
+			$alarm_user->save();
+		}
+		
 		return view('comment/_comment', [
 			'comment' => $comment
 		]);

@@ -1,6 +1,6 @@
 <div class="wrap-header cf">
 	<div class="box-header">
-		<h1 class="logo"><a href="{{ url('/articles') }}"><img src="{{ url('images/logo(84.24px)_bk.png') }}" alt=""></a></h1>
+		<h1 class="logo"><a href="{{ url('/') }}"><img src="{{ url('images/logo(84.24px)_bk.png') }}" alt=""></a></h1>
 		<ul class="ul-nav cf">
 			@if (!auth()->guest())
 				<li class="li-nav">
@@ -40,6 +40,31 @@
 					<a class="btn-upload disabled" href="{{ url('auth/login') }}">업로드</a>
 				</li>
 			@else
+				<li class="li-nav li-global">
+					<a class="btn-alarm" href="{{ url('/alarms/'.auth()->user()->id.'/alarm_check') }}" data-skip-pjax data-id="auth()->user()->id" data-csrf-token="{{ csrf_token() }}">
+						<i class="fa fa-globe" aria-hidden="true"></i>
+						@if (count(auth()->user()->alarms->where('checked',0)))
+							@if (auth()->user()->alarm_check == 0)
+								<div class="box-count">
+									<span class="count">{{ count(auth()->user()->alarms->where('checked',0)) }}</span>
+								</div>
+							@endif
+						@endif
+					</a>
+					<div class="box-alarm-list">
+						@if (count(auth()->user()->alarms))
+							<div class="box-set">
+								<span class="txt-alarm">알림</span>
+								<a class="btn-read-alarm" href="{{ url('/alarms/'.auth()->user()->id.'/read_all_alarm') }}" data-skip-pjax data-csrf-token="{{ csrf_token() }}">
+									모두 읽음 표시
+								</a>
+							</div>
+						@endif
+						<ul class="ul-alarm">
+							@each('gallery.alarm', auth()->user()->alarms->reverse(), 'alarm', 'gallery.no_alarm')
+						</ul>
+					</div>
+				</li>
 				<li class="li-nav li-my">
 					<a href="{{ url('/mypage/'.auth()->user()->id.'?category=works') }}">
 						<div class="box-mini-profile">

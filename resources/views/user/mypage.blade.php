@@ -157,7 +157,7 @@
 								<ul>
 									<li>
 										<span class="icon"><i class="fa fa-file-image-o" aria-hidden="true"></i></span>
-										<span class="count">{!! count($user->articles) !!}</span>
+										<span class="count">{!! count($user->articles->where('deleted', 0)) !!}</span>
 									</li>
 									<li>
 										<span class="icon"><i class="fa fa-heart" aria-hidden="true"></i></span>

@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddAlarmToUsers' => $baseDir . '/database/migrations/2016_09_06_163147_add_alarm_to_users.php',
     'AddAuthToUser' => $baseDir . '/database/migrations/2016_08_02_074527_add_auth_to_user.php',
     'AddCategoryToArticles' => $baseDir . '/database/migrations/2016_08_04_010317_add_category_to_articles.php',
     'AddFollowToUsers' => $baseDir . '/database/migrations/2016_08_17_191212_add_follow_to_users.php',
@@ -24,6 +25,7 @@ return array(
     'AddWriterToArticles' => $baseDir . '/database/migrations/2016_08_11_151401_add_writer_to_articles.php',
     'ChangeEmailToUsers' => $baseDir . '/database/migrations/2016_08_19_185850_change_email_to_users.php',
     'ChangeWriterkeyToArticles' => $baseDir . '/database/migrations/2016_08_12_121319_change_writerkey_to_articles.php',
+    'CreateAlarmsTable' => $baseDir . '/database/migrations/2016_09_05_190534_create_alarms_table.php',
     'CreateArticleTable' => $baseDir . '/database/migrations/2016_08_02_024913_create_article_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateReportsTable' => $baseDir . '/database/migrations/2016_08_24_151744_create_reports_table.php',

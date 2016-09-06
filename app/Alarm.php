@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Alarm extends Model
 {
     public function user()
 	{
@@ -16,8 +16,8 @@ class Comment extends Model
 	    return $this->belongsTo('App\Article');
 	}
 
-	public function alarms()
-    {
-        return $this->hasMany('App\Alarm');
-    }
+	public function comment()
+	{
+	    return $this->belongsTo('App\Comment');
+	}
 }

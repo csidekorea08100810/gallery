@@ -87,7 +87,7 @@ $(function(){
 					        	$('.blackcover').fadeIn();
 					        	$('.box-image').children().remove();
 								$('.box-image').append("<img id='target'>").show();
-
+								
 				            	$('#target').attr('src',reader.result);
 				            	$pimg.attr('src',reader.result);
 				            	$('#target').css({'width':'auto','height':'auto'});
@@ -107,6 +107,7 @@ $(function(){
 
 								    // Store the API in the jcrop_api variable
 								    _jcrop_api = this;
+								    _jcrop_api.animateTo([0,0,0,0]);
 
 								    // Move the preview into the jcrop container for css positioning
 								    $preview.appendTo(_jcrop_api.ui.holder);
@@ -431,14 +432,6 @@ $(document).on("click", '.btn-like', function(){
 
 	}						
 	return false;
-});
-
-// 멘션
-$("#multi-users").mention({
-    delimiter: '@',
-    users: [
-    
-    ]
 });
 
 // 게시글 신고
