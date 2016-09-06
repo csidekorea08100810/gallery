@@ -527,7 +527,31 @@ class ArticleController extends Controller
             $user->upload_articles = count($upload_articles);
             $user->save();
 
+            // Alarm : article
+            $follower_array = str_replace('*', '', $user->follower);
+            $follower_array2 = explode(',', $follower_array);
+            $followers = User::where('deleted', false)
+                                ->whereIn('id', $follower_array2)
+                                ->get();
+
+            foreach ($followers as $follower) {
+                $alarm = new Alarm;
+                $alarm->mention_name = auth()->user()->name;
+                $alarm->mention_id = auth()->user()->id;
+                $alarm->article_id = $article->id;
+                $alarm->image = $imageName;
+                $alarm->type = 'article';
+                $alarm->user_id = $follower->id;
+                $alarm->url = url('/articles/'.$article->id);
+                $alarm->save();
+
+                $user = User::find($follower->id);
+                $user->alarm_check = 0;
+                $user->save();
+            }
+            
             return redirect('/articles/'.$article->id);
+            // return $followers;
         }
         
     }

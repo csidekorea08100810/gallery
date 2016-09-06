@@ -25,4 +25,14 @@ class AlarmController extends Controller
     	$user->alarm_check = 1;
     	$user->save();
     }
+
+    function read_all_alarm($user_id) {
+        $alarms = Alarm::where('deleted', false)
+                        ->where('user_id', $user_id)
+                        ->get();
+        foreach ($alarms as $alarm) {
+            $alarm->checked = 1;
+            $alarm->save();
+        }
+    }
 }

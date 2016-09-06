@@ -107,6 +107,7 @@ $(function(){
 
 								    // Store the API in the jcrop_api variable
 								    _jcrop_api = this;
+								    _jcrop_api.animateTo([0,0,0,0]);
 
 								    // Move the preview into the jcrop container for css positioning
 								    $preview.appendTo(_jcrop_api.ui.holder);

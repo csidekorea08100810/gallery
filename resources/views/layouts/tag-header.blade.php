@@ -51,9 +51,19 @@
 							@endif
 						@endif
 					</a>
-					<ul class="ul-alarm">
-						@each('gallery.alarm', auth()->user()->alarms->reverse(), 'alarm', 'gallery.no_alarm')
-					</ul>
+					<div class="box-alarm-list">
+						@if (count(auth()->user()->alarms))
+							<div class="box-set">
+								<span class="txt-alarm">알림</span>
+								<a class="btn-read-alarm" href="{{ url('/alarms/'.auth()->user()->id.'/read_all_alarm') }}" data-skip-pjax data-csrf-token="{{ csrf_token() }}">
+									모두 읽음 표시
+								</a>
+							</div>
+						@endif
+						<ul class="ul-alarm">
+							@each('gallery.alarm', auth()->user()->alarms->reverse(), 'alarm', 'gallery.no_alarm')
+						</ul>
+					</div>
 				</li>
 				<li class="li-nav li-my">
 					<a href="{{ url('/mypage/'.auth()->user()->id.'?category=works') }}">
