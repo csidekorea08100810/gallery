@@ -22,6 +22,8 @@ Route::resource('subscription','ArticleController@subscription');
 Route::resource('search','ArticleController@search');
 Route::resource('articles/{article_id}/like','ArticleController@like');
 
+Route::resource('alarms/{alarm_id}/check','AlarmController@check');
+
 Route::resource('articles/{article_id}/comments','CommentController');
 
 Route::resource('articles/usercheck','ArticleController@usercheck');

@@ -12,6 +12,8 @@ use App\Comment;
 
 use App\User;
 
+use App\Alarm;
+
 use Validator;
 
 class CommentController extends Controller
@@ -61,6 +63,41 @@ class CommentController extends Controller
 
 		$comment->save();
 
+		// Alarm : mention
+		$article = Article::find($article_id);
+
+		if (count($mention)) {
+			foreach ($mention as $mention_id) {
+				if ($article->user->id == $mention_id) continue;
+				$alarm = new Alarm;
+				$alarm->article_id = $article_id;
+				$alarm->type = 'mention';
+
+				$alarm->mention_id = auth()->user()->id;
+				$alarm->mention_name = auth()->user()->name;
+				$alarm->user_id = $mention_id;
+
+				$alarm->image = auth()->user()->image;
+				$alarm->url = url('/articles/'.$article_id);
+				$alarm->save();	
+			}	
+		}
+
+		// Alarm : comment
+		$alarm = new Alarm;
+		$alarm->article_id = $article_id;
+		$alarm->type = 'comment';
+
+		$alarm->mention_id = auth()->user()->id;
+		$alarm->mention_name = auth()->user()->name;
+		$alarm->user_id = $article->user->id;
+
+		$alarm->image = auth()->user()->image;
+		$alarm->url = url('/articles/'.$article_id);
+		$alarm->save();	
+		
+		
+		
 		return view('comment/_comment', [
 			'comment' => $comment
 		]);

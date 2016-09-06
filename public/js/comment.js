@@ -79,6 +79,7 @@ $(document).on("click", ".btn-delete-comment", function() {
 		}).error(function() {
 			modalOpen('ok','에러!');
 		});
+		return false;
 	});
 
 

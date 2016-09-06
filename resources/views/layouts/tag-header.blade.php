@@ -1,6 +1,6 @@
 <div class="wrap-header cf">
 	<div class="box-header">
-		<h1 class="logo"><a href="{{ url('/articles') }}"><img src="{{ url('images/logo(84.24px)_bk.png') }}" alt=""></a></h1>
+		<h1 class="logo"><a href="{{ url('/') }}"><img src="{{ url('images/logo(84.24px)_bk.png') }}" alt=""></a></h1>
 		<ul class="ul-nav cf">
 			@if (!auth()->guest())
 				<li class="li-nav">
@@ -40,6 +40,19 @@
 					<a class="btn-upload disabled" href="{{ url('auth/login') }}">업로드</a>
 				</li>
 			@else
+				<li class="li-nav li-global">
+					<a class="btn-alarm" href="#">
+						<i class="fa fa-globe" aria-hidden="true"></i>
+						@if (count(auth()->user()->alarms->where('checked',0)))
+						<div class="box-count">
+							<span class="count">{{ count(auth()->user()->alarms->where('checked',0)) }}</span>
+						</div>
+						@endif
+					</a>
+					<ul class="ul-alarm">
+						@each('gallery.alarm', auth()->user()->alarms->reverse(), 'alarm', 'gallery.no_alarm')
+					</ul>
+				</li>
 				<li class="li-nav li-my">
 					<a href="{{ url('/mypage/'.auth()->user()->id.'?category=works') }}">
 						<div class="box-mini-profile">
