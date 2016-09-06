@@ -101,8 +101,8 @@ body {position:relative; padding:75px 0 0; background:#fbfbfb;}
 .wrap-header .box-header .ul-user .li-global .box-set .txt-alarm {float: left; margin:4px 0 0; font-size:12px; font-weight:bold; color:#565656;}
 .wrap-header .box-header .ul-user .li-global .box-set a {display:inline; padding:0; font-size:11px; color:#ed642c;}
 .wrap-header .box-header .ul-user .li-global .box-set a:hover {background:#fff; text-decoration:underline;}
-.wrap-header .box-header .ul-user .li-global .ul-alarm .li-none .box-image {width:30px; height:30px; margin:0 auto; padding:15px 0 0;}
-.wrap-header .box-header .ul-user .li-global .ul-alarm .li-none .box-image img {width:100%;}
+.wrap-header .box-header .ul-user .li-global .ul-alarm .li-none .box-none {width:30px; height:30px; margin:0 auto; padding:15px 0 0;}
+.wrap-header .box-header .ul-user .li-global .ul-alarm .li-none .box-none img {width:100%;}
 .wrap-header .box-header .ul-user .li-global .ul-alarm .li-none p {text-align:center; font-size:12px; color:#565656; padding:10px;}
 .box-upload {padding:20px 30px 30px; border-right:1px solid #d4d4d4; border-bottom:2px solid #d4d4d4; box-shadow:0 0 2px rgba(0,0,0,0.3); background:#fff;}
 .box-upload h2 {clear:both; font-size:18px; font-weight:bold; color:#565656;}
