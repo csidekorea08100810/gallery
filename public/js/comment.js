@@ -44,14 +44,14 @@ $(document).on('submit', '#form-comment', function() {
 	return false;
 });
 
-// 답글달기 다시 만들기
-// $(document).on("click", ".btn-reply", function() {
-// 	var name = $(this).closest('li').find('.writer').text();
+// 답글달기 
+$(document).on("click", ".btn-reply", function() {
+	var name = $(this).closest('li').find('.writer').text();
 
-// 	$('textarea[name=content]').val('@'+name+' ').focus();
-
-// 	return false;
-// });
+	$('textarea[name=content]').val('@'+name+' ').focus();
+	$('input[name=mention]').val(name);
+	return false;
+});
 
 
 // 댓글 삭제
@@ -81,7 +81,6 @@ $(document).on("click", ".btn-delete-comment", function() {
 		});
 		return false;
 	});
-
 
 	return false;
 });

@@ -82,8 +82,8 @@ body {position:relative; padding:75px 0 0; background:#fbfbfb;}
 .wrap-header .box-header .ul-user .li-global .ul-alarm li a {display:block; min-height:30px; max-height:54px; padding:10px 20px 10px 10px; text-align:left; background:#fff;}
 .wrap-header .box-header .ul-user .li-global .ul-alarm li a.checked {background:#f4f4f4;}
 .wrap-header .box-header .ul-user .li-global .ul-alarm li a.read, .wrap-header .box-header .ul-user .li-global .ul-alarm li a:hover {background:#f4f4f4;}
-.wrap-header .box-header .ul-user .li-global .ul-alarm li a .box-image {float: left; width:30px; height:30px; margin:0 10px 0 0; overflow: hidden; border:1px solid #d4d4d4; border-radius:50%;}
-.wrap-header .box-header .ul-user .li-global .ul-alarm li a .box-image img {width:100%;}
+.wrap-header .box-header .ul-user .li-global .ul-alarm li a .box-thumb {float: left; width:30px; height:30px; margin:0 10px 0 0; overflow: hidden; border:1px solid #d4d4d4; border-radius:50%;}
+.wrap-header .box-header .ul-user .li-global .ul-alarm li a .box-thumb img {width:100%;}
 .wrap-header .box-header .ul-user .li-global .ul-alarm li a p {line-height:1.5; color:#565656; min-height:36px; font-size:12px; text-align:left;}
 .wrap-header .box-header .ul-user .li-global .ul-alarm li a p .name {font-weight:bold;}
 .wrap-header .box-header .ul-user .li-global .ul-alarm li a .box-info {clear: both; padding:0 0 0 40px;}

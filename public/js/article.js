@@ -87,7 +87,7 @@ $(function(){
 					        	$('.blackcover').fadeIn();
 					        	$('.box-image').children().remove();
 								$('.box-image').append("<img id='target'>").show();
-
+								
 				            	$('#target').attr('src',reader.result);
 				            	$pimg.attr('src',reader.result);
 				            	$('#target').css({'width':'auto','height':'auto'});
@@ -431,14 +431,6 @@ $(document).on("click", '.btn-like', function(){
 
 	}						
 	return false;
-});
-
-// 멘션
-$("#multi-users").mention({
-    delimiter: '@',
-    users: [
-    
-    ]
 });
 
 // 게시글 신고

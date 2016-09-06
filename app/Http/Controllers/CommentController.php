@@ -84,19 +84,19 @@ class CommentController extends Controller
 		}
 
 		// Alarm : comment
-		$alarm = new Alarm;
-		$alarm->article_id = $article_id;
-		$alarm->type = 'comment';
+		if (auth()->user()->id != $article->user->id) {
+			$alarm = new Alarm;
+			$alarm->article_id = $article_id;
+			$alarm->type = 'comment';
 
-		$alarm->mention_id = auth()->user()->id;
-		$alarm->mention_name = auth()->user()->name;
-		$alarm->user_id = $article->user->id;
+			$alarm->mention_id = auth()->user()->id;
+			$alarm->mention_name = auth()->user()->name;
+			$alarm->user_id = $article->user->id;
 
-		$alarm->image = auth()->user()->image;
-		$alarm->url = url('/articles/'.$article_id);
-		$alarm->save();	
-		
-		
+			$alarm->image = auth()->user()->image;
+			$alarm->url = url('/articles/'.$article_id);
+			$alarm->save();		
+		}
 		
 		return view('comment/_comment', [
 			'comment' => $comment
