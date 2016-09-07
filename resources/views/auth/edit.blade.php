@@ -41,7 +41,7 @@
 				<h3>개인정보 수정</h3>
 				@if (auth()->user()->email == null)
 					<div class="social-user">
-						{{ auth()->user()->social->provider }} 계정으로 가입하셨습니다.
+						{{ auth()->provider ? auth()->provider : auth()->user()->social->provider }} 계정으로 가입하셨습니다.
 					</div>	
 				@endif
 				<!-- 이미지 사이즈 -->
