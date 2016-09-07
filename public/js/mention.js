@@ -55,7 +55,7 @@
                                 for (j = 0; j < usernames.length; j++) {
                                     var username = (usernames[j].substring(1)).toLowerCase(),
                                         re = new RegExp(settings.delimiter + item, "g"),
-                                        used = ((this.query.toLowerCase()).match(re));
+                                        used = ((this.query.toLowerCase()).match(item));
 
                                     if (item.indexOf(username) != -1 && used === null) {
                                         return true;
