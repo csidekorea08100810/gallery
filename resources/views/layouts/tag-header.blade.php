@@ -46,7 +46,7 @@
 						@if (count(auth()->user()->alarms->where('checked',0)))
 							@if (auth()->user()->alarm_check == 0)
 								<div class="box-count">
-									<span class="count">{{ count(auth()->user()->alarms->where('checked',0)) }}</span>
+									<span class="count">{{ count(auth()->user()->alarms->where('checked',0)) > 99 ? '99+' : count(auth()->user()->alarms->where('checked',0)) }}</span>
 								</div>
 							@endif
 						@endif

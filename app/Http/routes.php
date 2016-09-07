@@ -27,6 +27,7 @@ Route::resource('alarms/{alarm_id}/alarm_check','AlarmController@alarm_check');
 Route::resource('alarms/{alarm_id}/read_all_alarm','AlarmController@read_all_alarm');
 
 Route::resource('articles/{article_id}/comments','CommentController');
+Route::resource('articles/{article_id}/more','ArticleController@more');
 
 Route::resource('articles/usercheck','ArticleController@usercheck');
 Route::resource('articles/emailcheck','ArticleController@emailcheck');

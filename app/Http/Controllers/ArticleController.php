@@ -297,19 +297,45 @@ class ArticleController extends Controller
             }
         }
 
+        $writer_articles = Article::where('user_id', $article->user->id)
+                                    ->whereNotIn('id', [$article->id])
+                                    ->where('deleted', false)
+                                    ->orderBy('created_at', 'desc')
+                                    ->take(6)
+                                    ->get();
+
         $related_articles = Article::where('deleted', false)
                                     ->where('category', $article->category)
                                     ->whereNotIn('id', [$id])
                                     ->orderBy('created_at', 'desc')
-                                    ->take(5)
+                                    ->take(15)
                                     ->get();
 
         
     	return view('article.show', [
     		'article' => $article,
             'related_articles' => $related_articles,
+            'writer_articles' => $writer_articles,
             'users' => $users,
     	]);
+    }
+
+    function more($article_id, Request $request) 
+    {
+        if ($request->offset < 6) {
+            $article = Article::find($article_id);
+
+            $articles = Article::where('deleted', false)
+                                ->where('category', $article->category)
+                                ->orderBy('created_at', 'desc')
+                                ->skip($request->offset*15)
+                                ->take(15)
+                                ->get();
+
+            return view('article.related_article_more', [
+                'articles' => $articles,
+            ]);    
+        }
     }
 
     function like($id, Request $request) 
@@ -441,7 +467,7 @@ class ArticleController extends Controller
             $article->tag = $tags;
             // -------------- 2016. 8 .30 수정 ------------------
 
-            $article->body = $request->smarteditor;
+            $article->body = preg_replace("/<script>.*<\/script>/s", "", $request->smarteditor);
             $article->writer_key = auth()->user()->name;
             $article->user_id = auth()->user()->id;
 
@@ -498,7 +524,7 @@ class ArticleController extends Controller
             $article->tag = $tags;
             // -------------- 2016. 8 .30 수정 ------------------
 
-            $article->body = $request->smarteditor;
+            $article->body = preg_replace("/<script>.*<\/script>/s", "", $request->smarteditor);
             $article->writer_key = auth()->user()->name;
             $article->user_id = auth()->user()->id;
 
@@ -551,7 +577,6 @@ class ArticleController extends Controller
             }
             
             return redirect('/articles/'.$article->id);
-            // return $followers;
         }
         
     }

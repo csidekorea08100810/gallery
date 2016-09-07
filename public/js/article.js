@@ -446,3 +446,42 @@ $(document).on("click", ".btn-article-report", function() {
 	return false;
 });
 
+$(function(){
+
+	if ($('.box-show').length) {
+		var contentHeight = $('html').height();
+		var screenHeight = $(window).height();
+		var scroll = contentHeight - screenHeight - 30;
+		var _token = $('.box-show').data('csrfToken');
+		var url = $('.box-show').data('url');
+		var offset = 0;
+
+		$(window).scroll(function(){
+			var contentHeight = $('html').height();
+			var screenHeight = $(window).height();
+			var scroll = contentHeight - screenHeight - 30;
+			
+			var scrollTop = $(window).scrollTop();
+
+			if (scrollTop > scroll) {
+				offset++;
+
+				$.ajax({
+					method: 'post',
+					url: url,
+					data: {
+						offset : offset,
+						_token: _token
+					}
+				}).done(function (data){
+					$('.main-article').append(data);
+				}).error(function (){
+					console.log('실패!');
+				});
+
+				console.log(offset);
+			}
+		});	
+	}	
+	
+});
