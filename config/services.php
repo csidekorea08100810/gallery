@@ -42,13 +42,13 @@ return [
     'facebook' => [
         'client_id' => '322237758119021',
         'client_secret' => 'ae67100c8587e2cc1415d817f1a99b4c',
-        'redirect' => 'http://localhost:8000/callback',
+        'redirect' => 'http://52.78.126.91/callback',
     ],
 
     'naver' => [
         'client_id' => 'x7xiy2QF22bhrH01Nb5n',
         'client_secret' => 'y29YAnO6hE',
-        'redirect' => 'http://localhost:8000/',
+        'redirect' => 'http://52.78.126.91/auth/naver/callback',
     ], 
     
     'kakao' => [
