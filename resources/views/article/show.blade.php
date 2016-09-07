@@ -18,7 +18,7 @@
 		{{ $error }}
 	@endforeach
 	@include('modal/modal')
-	<div class="box-show">
+	<div class="box-show" data-csrf-token="{{ csrf_token() }}" data-url="{{ url('/articles/'.$article->id.'/more') }}">
 		<div class="box-header">
 			<h2>{{ $article->title }}</h2>
 			<span class="info">
@@ -32,7 +32,7 @@
 					카테고리D
 				@endif
 				/
-				{{ $article->created_at }}
+				{!! substr(str_replace('-', '. ', $article->created_at),0,18) !!}
 				<br>
 				조회수 : {!! count(explode(',',$article->hit)) !!}
 			</span>
@@ -187,26 +187,25 @@
 				@endif
 			@endif 
 		</div>
+		@if (count($writer_articles))
+			<div class="box-other-article">
+				<h4>작가의 다른 작품들</h4>
+				<ul class="ul-article">
+					@foreach($writer_articles as $article)
+						<li class="easing">
+							<a href="{{ url('/articles/'.$article->id) }}">
+								<img src="{{ url('/uploads/'.$article->image) }}" alt="">	
+							</a>
+						</li>
+					@endforeach
+				</ul>
+			</div>
+		@endif
 	</div>
 	<div class="box-relate-article">
 		<h2>위와 관련된 작품들입니다.</h2>
 		<ul class="main-article">
-			@foreach($related_articles->all() as $article)
-				<li>
-					<a href="{{ url('/articles/'.$article->id) }}" data-name="유저네임">
-						<img src="{{ url('/uploads/'.$article->image) }}" alt="{{ $article->title }}" class="thumbnail">
-						<div class="desc-box">
-							@if($article->user->image == '')
-								<img class="profile" src="{{ url('/images/profile.png') }}" alt="">
-							@else 
-								<img class="profile" src="{{ url('/uploads/'.$article->user->image) }}" alt="">
-							@endif
-							<span class="title">{{ $article->title }}</span>
-							<span class="writer">by. {{ $article->writer_key }}</span>
-						</div>
-					</a>
-				</li>
-			@endforeach
+			@each('article.related_article', $related_articles->all(), 'article')
 		</ul>
 	</div>
 </div>
