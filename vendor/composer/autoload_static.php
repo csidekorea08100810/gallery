@@ -372,6 +372,7 @@ class ComposerStaticInit6b6db1ce4e925f9faad57fde31c59f0e
         'AddLikedToUser' => __DIR__ . '/../..' . '/database/migrations/2016_08_19_154503_add_liked_to_user.php',
         'AddMentionToComments' => __DIR__ . '/../..' . '/database/migrations/2016_09_05_141642_add_mention_to_comments.php',
         'AddOptionToArticles' => __DIR__ . '/../..' . '/database/migrations/2016_08_04_102507_add_option_to_articles.php',
+        'AddProviderToUsers' => __DIR__ . '/../..' . '/database/migrations/2016_09_07_170119_add_provider_to_users.php',
         'AddUploadarticlesToUsers' => __DIR__ . '/../..' . '/database/migrations/2016_08_29_164228_add_uploadarticles_to_users.php',
         'AddUseridToArticles' => __DIR__ . '/../..' . '/database/migrations/2016_08_17_170445_add_userid_to_articles.php',
         'AddUseridToComments' => __DIR__ . '/../..' . '/database/migrations/2016_08_16_154145_add_userid_to_comments.php',
