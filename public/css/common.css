@@ -2,13 +2,27 @@ html, body {width:100%;}
 body {position:relative; padding:75px 0 0; background:#fbfbfb;}
 * {outline:none;}
 /*span, p, a, span {font-family:"Apple Gothic", sans-serif; font-weight:200;}*/
+h1,h2,h3,h4,h5,h6, div, p, span, strong, em, td, a {font-family:'notosans'; font-weight:300; letter-spacing:-0.025em;}
+.en {letter-spacing:0;}
 ::selection {background:#ed642c; color:#fff;}
 .cf {*zoom:1;}
 .cf:after {content:''; display:block; clear:both;}
 .blind {width:0px; height:0px; position:absolute; top:-9999px; left:-9999px; text-indent:-9999px; opacity:0; display:none;}
 .blackcover {display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.7); z-index:10; cursor:default;}
+.wrap_ban {width:100%; height:780px; background:#d4d4d4; position:absolute; top:0; left:0;}
+.wrap_ban .ban {display:none;}
+.wrap_ban .ban1 {position:absolute; left:0; top:0; width:100%; height:100%; background:url('../temp/ban_main1.jpg') center center; background-size:cover;}
+.wrap_ban .ban2 {position:absolute; left:0; top:0; width:100%; height:100%; background:url('../temp/ban_main2.jpg') center center; background-size:cover;}
+.wrap_ban .ban3 {position:absolute; left:0; top:0; width:100%; height:100%; background:url('../temp/ban_main3.jpg') center center; background-size:cover;}
+.wrap_ban .ban4 {position:absolute; left:0; top:0; width:100%; height:100%; background:url('../temp/ban_main4.jpg') center center; background-size:cover;}
+.wrap_ban .ban5 {position:absolute; left:0; top:0; width:100%; height:100%; background:url('../temp/ban_main5.jpg') center center; background-size:cover;}
+.wrap_ban .tit_welcome {position:absolute; left:0; top:380px; width:100%; z-index:1; text-align:center;}
+.wrap_ban .tit_welcome p {color:#fff; text-shadow:0px 0px 1px rgba(0,0,0,0.5);}
+.wrap_ban .tit_welcome .en {font-size:56px; padding:0 0 10px; font-weight:100;}
+.wrap_ban .tit_welcome .en span {font-weight:400;}
+.wrap_ban .tit_welcome .kr {font-size:30px; font-weight:100;}
 .wrap_main {width:1250px; margin:0 auto; padding:15px;}
-.wrap-index h2 {clear:both; font-size:18px; font-weight:bold; color:#565656; padding:10px;}
+.wrap-index h2 {clear:both; font-size:18px; font-weight:500; color:#565656; padding:10px;}
 .wrap-index h2.h2-search {font-weight:normal;}
 .wrap-index h2.h2-search .point {color:#ed642c;}
 .wrap-index h2.none {padding:150px 0 ; font-size:16px; text-align:center; line-height:1.6; font-weight:normal;}
@@ -16,10 +30,10 @@ body {position:relative; padding:75px 0 0; background:#fbfbfb;}
 .wrap-index h3 {clear:both; font-size:16px; font-weight:normal; color:#565656; margin:30px 0 10px; padding:10px; border-bottom:1px solid #d4d4d4;}
 .wrap-index h3 p {float: right; font-size:13px; color:#8f8f8f;}
 .wrap-index h3 p a {color:#ed642c; font-size:13px; margin:0 0 0 5px;}
-.wrap_main .box-main-banner {height:100px; margin:0 0 30px; padding:13px; overflow: hidden;}
+.wrap_main .box-main-banner {height:100px; margin:720px 0 30px; padding:13px; overflow: hidden;}
 .wrap_main .box-main-banner img {width:100%; position:relative; left:-2px;}
 .wrap_main .main-article {overflow: hidden;}
-.wrap_main .main-article li {width:228px; height:228px; margin:10px; float:left; border-right:1px solid #d4d4d4; border-bottom:2px solid #d4d4d4; box-shadow:0 0 2px rgba(0,0,0,0.3); background:#fff;}
+.wrap_main .main-article li {width:228px; height:228px; margin:10px; float:left; border-right:1px solid #d4d4d4; border-bottom:2px solid #d4d4d4; box-shadow:0 0 2px rgba(0,0,0,0.3); background:#d4d4d4;}
 .wrap_main .main-article li a {display:block; overflow: hidden; width:100%; height:100%; position:relative;}
 .wrap_main .main-article li a .thumbnail {display:block; width:100%; height:100%;}
 .wrap_main .main-article li a .desc-box {position:absolute; bottom:-60px; left:0; width:100%; height:60px; background:rgba(0,0,0,0.5); 
@@ -43,9 +57,24 @@ body {position:relative; padding:75px 0 0; background:#fbfbfb;}
 	-o-transition:all .2s ease-in;
 	transition:all .2s ease-in;
 }
+.wrap-header.main {padding:15px 0 0; background:none; border:1px solid rgba(0,0,0,0);}
+.wrap-header.main .box-header .ul-nav .li-nav > a {color:#fff;}
+.wrap-header.main .box-header .ul-nav .li-nav > a:hover {color:#d4d4d4;}
+.wrap-header.main .box-header .logo .off {display:none;}
+.wrap-header.main .box-header .logo .on {display:inline-block;}
+.wrap-header.main .box-header .ul-user .li-search input {background:rgba(255,255,255,0.3); border:1px solid rgba(255,255,255,0.4);}
+.wrap-header.main .box-header .ul-user .li-nav .link-login {background:rgba(255,255,255,0.3); border:1px solid rgba(255,255,255,0.4); color:#fff;}
+.wrap-header.main .box-header .ul-user .li-nav .link-login:hover {background:rgba(255,255,255,0.4);}
+.wrap-header.main .box-header .ul-user .li-search button {opacity:1;}
+.wrap-header.main .box-header .ul-user .li-search button .off {display:none;}
+.wrap-header.main .box-header .ul-user .li-search button .on {display:inline-block;}
+.wrap-header.main .box-header .ul-user .li-global i {color:rgba(255,255,255,0.7);}
+
 .wrap-header .box-header {width:1280px; margin:0 auto;}
 .wrap-header .box-header .logo {float:left;}
 .wrap-header .box-header .logo img {height:30px; margin:15px 30px 0 0;}
+.wrap-header .box-header .logo .off {display:inline-block;}
+.wrap-header .box-header .logo .on {display:none;}
 .wrap-header .box-header .ul-nav {float: left;}
 .wrap-header .box-header .ul-nav .li-nav {margin:0 20px; padding:24px 0; float:left; position:relative;}
 .wrap-header .box-header .ul-nav .li-nav > a {color:#565656;}
@@ -72,6 +101,8 @@ body {position:relative; padding:75px 0 0; background:#fbfbfb;}
 .wrap-header .box-header .ul-user .li-search input {width:150px; height:30px; padding:0 30px 0 10px; background:#f4f4f4; font-size:13px; color:#565656; border-radius:5px; outline:none; border:1px solid #d4d4d4;}
 .wrap-header .box-header .ul-user .li-search button {position:absolute; top:20px; right:3px; background:none; border:none; outline:none; cursor:pointer; opacity:0.7;}
 .wrap-header .box-header .ul-user .li-search button img {width:14px;}
+.wrap-header .box-header .ul-user .li-search button .off {display:inline-block;}
+.wrap-header .box-header .ul-user .li-search button .on {display:none;}
 .wrap-header .box-header .ul-user .li-global {width:40px; padding:0 0 0 20px; line-height:68px; text-align:center; position:relative;}
 .wrap-header .box-header .ul-user .li-global .btn-alarm {display:block;}
 .wrap-header .box-header .ul-user .li-global .btn-alarm.check .box-count {display:none;}

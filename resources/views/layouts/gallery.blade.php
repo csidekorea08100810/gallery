@@ -33,6 +33,7 @@
 		
 		<link rel='stylesheet' href="{{url('css/nprogress.css') }}"/>
 		<link rel="stylesheet" href="{{ url('css/reset.css') }}">
+		<link rel="stylesheet" href="{{ url('css/notosanskr.css') }}">
 		<link rel="stylesheet" href="{{ url('css/common.css') }}">
 		<link rel="stylesheet" href="{{ url('css/jquery.Jcrop.css') }}">
 		<link rel="stylesheet" href="{{ url('css/font-awesome.min.css') }}">
@@ -50,7 +51,7 @@
 					<li><a href="">자주묻는 질문</a></li>
 					<li><a href="">이용약관</a></li>
 					<li><a href="">개인정보 취급방침</a></li>
-					<li><p>COPYRIGHT 2016 © C.SIDE INC. ALL RIGHTS RESERVED.</p></li>	
+					<li><p class="en">COPYRIGHT 2016 © C.SIDE INC. ALL RIGHTS RESERVED.</p></li>	
 				</ul>
 			</div>
 		</div>
