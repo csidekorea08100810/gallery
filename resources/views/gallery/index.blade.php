@@ -2,6 +2,17 @@
 @section('title')
 @endsection
 @section('content')
+<div class="wrap_ban">
+	<div class="ban ban1"></div>
+	<div class="ban ban2"></div>
+	<div class="ban ban3"></div>
+	<div class="ban ban4"></div>
+	<div class="ban ban5"></div>
+	<div class="tit_welcome">
+		<p class="en">C.GALLERY <span>PLAY CULTURE</span></p>
+		<p class="kr">여러분들의 창의력을 펼쳐보세요</p>
+	</div>
+</div>
 <div class="wrap-index">
 	<div class="box-main-banner">
 		<a href="#">

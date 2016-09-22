@@ -1,6 +1,11 @@
 <div class="wrap-header cf">
 	<div class="box-header">
-		<h1 class="logo"><a href="{{ url('/') }}"><img src="{{ url('images/logo(84.24px)_bk.png') }}" alt=""></a></h1>
+		<h1 class="logo">
+			<a href="{{ url('/') }}">
+				<img class="off" src="{{ url('images/logo(84.24px)_bk.png') }}" alt="C.GALLERY">
+				<img class="on" src="{{ url('images/logo(84.24px)_wh.png') }}" alt="C.GALLERY">
+			</a>
+		</h1>
 		<ul class="ul-nav cf">
 			@if (!auth()->guest())
 				<li class="li-nav">
@@ -29,7 +34,10 @@
 			<li class="li-nav li-search">
 				<form class="form-search" action="{{ url('/search') }}" method="get">
 					<input type="text" name="search_query" id="">
-					<button type="submit"><img src="{{ url('/images/search1.png') }}" alt=""></button>	
+					<button type="submit">
+						<img class="off" src="{{ url('/images/search1.png') }}" alt="검색돋보기 버튼">
+						<img class="on" src="{{ url('/images/search1w.png') }}" alt="검색돋보기 버튼">
+					</button>	
 				</form>
 			</li>
 			@if(auth()->guest())				

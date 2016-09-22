@@ -47,7 +47,7 @@
 
 					<div class="box-article">
 						<ul>
-							@foreach($user->articles->where('deleted', 0)->take(8) as $article)
+							@foreach($user->articles->where('deleted', 0) as $article)
 								<li><a href="{{ url('/articles/'.$article->id) }}"><img src="{{ url('/uploads/'.$article->image) }}" alt="{{ $article->title }}"></a></li>
 							@endforeach
 						</ul>
