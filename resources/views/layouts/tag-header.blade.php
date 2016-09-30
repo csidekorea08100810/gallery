@@ -69,7 +69,7 @@
 							</div>
 						@endif
 						<ul class="ul-alarm">
-							@each('gallery.alarm', auth()->user()->alarms->reverse(), 'alarm', 'gallery.no_alarm')
+							@each('gallery.alarm', auth()->user()->alarms->where('deleted', 0)->reverse(), 'alarm', 'gallery.no_alarm')
 						</ul>
 					</div>
 				</li>
@@ -77,7 +77,8 @@
 					<a href="{{ url('/mypage/'.auth()->user()->id.'?category=works') }}">
 						<div class="box-mini-profile">
 							@if (auth()->user()->image == '')
-								<img src="{{ url('/images/profile2.png') }}" alt="">
+								<img class="on" src="{{ url('/images/profile.png') }}" alt="">
+								<img class="off" src="{{ url('/images/profile2.png') }}" alt="">
 							@else
 								<img src="{{ url('/uploads/'.auth()->user()->image) }}" alt="">
 							@endif	

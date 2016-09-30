@@ -179,6 +179,10 @@ $(document).on("submit", ".regist-form", function(){
 	registValidation();
 });
 
+$(document).on('focus', '.wrap-register .box-right .box-required input', function(){
+	$(this).removeClass('errorfocus');
+});
+
 function registValidation() {
 	setTimeout(function() {
 		if (!$(this).hasClass('disabled')) {

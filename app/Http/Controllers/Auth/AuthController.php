@@ -103,9 +103,8 @@ class AuthController extends Controller
         
 
         if ($validator->fails()) {
-            return redirect('/auth/register')
-                    ->withErrors($validator)
-                    ->withInput();
+            return view('auth.register')
+                    ->withErrors($validator);
         } else {
             return User::create([
                 'name' => $data['name'],

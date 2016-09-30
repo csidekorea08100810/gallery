@@ -16,7 +16,7 @@
 		<h3>
 			태그
 			@if (count($r_tag_articles) > 8 && !isset($_GET['all']))
-				<p>검색 결과가 더 남아있습니다. 더 보시겠습니까?<a href="{{ url('/search?search_query='.$_GET['search_query'].'&all=tag') }}">검색결과 더보기</a></p>
+				<p>검색 결과가 더 남아있습니다. <a href="{{ url('/search?search_query='.$_GET['search_query'].'&all=tag') }}">검색결과 더보기</a></p>
 			@endif
 		</h3>
 		<ul class="ul-like-articles">
@@ -70,7 +70,7 @@
 		<h3>
 			게시물
 			@if (count($r_articles) > 8 && !isset($_GET['all']))
-				<p>검색 결과가 더 남아있습니다. 더 보시겠습니까?<a href="{{ url('/search?search_query='.$_GET['search_query'].'&all=article') }}">검색결과 더보기</a></p>
+				<p>검색 결과가 더 남아있습니다. <a href="{{ url('/search?search_query='.$_GET['search_query'].'&all=article') }}">검색결과 더보기</a></p>
 			@endif
 		</h3>
 		<ul class="ul-like-articles">
@@ -119,7 +119,7 @@
 		<h3>
 			아티스트
 			@if (count($r_users) > 10 && !isset($_GET['all']))
-				<p>검색 결과가 더 남아있습니다. 더 보시겠습니까?<a href="{{ url('/search?search_query='.$_GET['search_query'].'&all=user') }}">검색결과 더보기</a></p>
+				<p>검색 결과가 더 남아있습니다. <a href="{{ url('/search?search_query='.$_GET['search_query'].'&all=user') }}">검색결과 더보기</a></p>
 			@endif
 		</h3>
 		<ul class="ul-follow-users">
