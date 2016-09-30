@@ -4,6 +4,37 @@ $(document).on('pjax:start', function() { NProgress.start(); });
 $(document).on('pjax:end',   function() { NProgress.done();  });
 // ----- pjax ------
 
+// 메인 배너
+$(function(){
+	function generate(i) {
+		if (Math.ceil(i) > 5) {
+			result = generate(Math.random()*10);
+		} else {
+			result = Math.ceil(i);
+		}
+		return result;
+	}
+	$('.wrap_ban .ban').hide();
+	if ($('.wrap_ban').length)	 {
+		$('.wrap-header').addClass('main');
+
+		var i = generate(Math.random()*10);
+		$('.wrap_ban .ban'+i).fadeIn(300);
+
+		$(window).scroll(function(){
+			var scroll = $(window).scrollTop();
+			if (scroll > 700) {
+				$('.wrap-header').removeClass('main');
+			} else {
+				$('.wrap-header').addClass('main');
+			}
+		});
+	}
+	
+	if($('.box-alarm-list .li-none').length) {
+		$('.box-alarm-list').css({'padding':0});
+	}
+});
 
 // ----- facebook login -----
 window.fbAsyncInit = function() {
@@ -202,33 +233,5 @@ $(document).on("click", ".btn-read-alarm", function(){
 		});
 	}
 	return false;
-});
-
-$(function(){
-	function generate(i) {
-		if (Math.ceil(i) > 5) {
-			result = generate(Math.random()*10);
-		} else {
-			result = Math.ceil(i);
-		}
-		return result;
-	}
-
-	if ($('.wrap_ban').length)	 {
-		$('.wrap-header').addClass('main');
-
-		var i = generate(Math.random()*10);
-		$('.wrap_ban .ban'+i).fadeIn(300);
-
-		$(window).scroll(function(){
-			var scroll = $(window).scrollTop();
-			if (scroll > 700) {
-				$('.wrap-header').removeClass('main');
-			} else {
-				$('.wrap-header').addClass('main');
-			}
-		});
-	}
-	
 });
 

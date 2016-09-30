@@ -3,14 +3,14 @@ $(function(){
 	for (var i = 0; i < $('.upload-error li').length; i++) {
 		var error = $('.upload-error li').eq(i).text();
 
-		if (error == ' The title field is required.') {
+		if (error == '- The title field is required.') {
 			errorMessage = '제목을 입력해주세요.';
-		} else if (error == ' The smarteditor field is required.') {
+		} else if (error == '- The smarteditor field is required.') {
 			errorMessage = '내용을 입력해주세요.';
-		} else if (error == ' The image field is required.') {
+		} else if (error == '- The image field is required.') {
 			errorMessage = '썸네일 이미지를 업로드 해주세요.';
 		} else {
-			errorMessage = '카테고리를 선택해주세요.';
+			errorMessage = error;
 		}
 
 		$('.upload-error li').eq(i).text(errorMessage);
@@ -369,8 +369,8 @@ $(function(){
 		if ($('input[name=category]').val() != '') {
 			$('.box-upload .box-category > ul li.category-selected p').removeClass('error');
 		}
+		$('.wrap-tag').removeClass('error');
 	});
-
 	$('.box-upload .box-agree .check input').removeAttr('checked');
 });
 
@@ -485,3 +485,13 @@ $(function(){
 	}	
 	
 });
+
+$(function() {
+	if ($('.box-upload-error').length) {
+		setTimeout(function(){
+			$('.box-upload-error').slideUp();
+		}, 5000);
+	}
+})
+
+

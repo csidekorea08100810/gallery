@@ -430,6 +430,14 @@ class ArticleController extends Controller
         $article->deleted = true;
         $article->save();
 
+        $alarms = Alarm::where('deleted', false)
+                        ->where('article_id', $id)
+                        ->get();
+        foreach($alarms as $alarm) {
+            $alarm->deleted = true;
+            $alarm->save();    
+        }
+
         if ($request->xhr) {
             return 'success';
         } else {
@@ -505,9 +513,8 @@ class ArticleController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('/articles/create')
-                    ->withErrors($validator)
-                    ->withInput();
+            return view('article.create')
+                    ->withErrors($validator);
         } else {
             $article = new Article;
             $article->title = $request->title;

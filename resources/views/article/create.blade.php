@@ -9,7 +9,7 @@
 	<h3>업로드에 실패했습니다.</h3>
     <ul class="upload-error">
         @foreach($errors->all() as $error)
-            <li> {{ $error }}</li>
+            <li>- {{ $error }}</li>
         @endforeach
     </ul>
 </div>
@@ -37,7 +37,7 @@
 		<span class="txt-upload">C.GALLERY UPLOAD</span>
 		<form action="{{ url('/articles') }}" method="POST" id="upload-article" enctype="multipart/form-data">
 	        {{ csrf_field() }}
-	        <input type="hidden" name="category" value="">
+	        <input type="hidden" name="category" value="{{ old('category') }}">
 	        <input type="hidden" name="creative" value="0">
 	        <input type="hidden" name="profit" value="0">
 	        <input type="hidden" name="share" value="0">

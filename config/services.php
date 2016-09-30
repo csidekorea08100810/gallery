@@ -42,7 +42,7 @@ return [
     'facebook' => [
         'client_id' => '322237758119021',
         'client_secret' => 'ae67100c8587e2cc1415d817f1a99b4c',
-        'redirect' => 'http://52.78.126.91/callback',
+        'redirect' => 'http://localhost:8000/callback',
     ],
 
     'naver' => [
