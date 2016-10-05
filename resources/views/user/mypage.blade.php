@@ -97,6 +97,11 @@
 					@foreach($articles as $article)
 						<li class="li-data">
 							<a href="{{ url('/articles/'.$article->id) }}">
+								@if ($article->open == true)
+									<div class="box-lock">
+										<img class="lock" src="{{ url('/images/lock.png') }}" alt="">
+									</div>
+								@endif
 								<div class="box-image">
 									<img src="{{ url('/uploads/'.$article->image) }}" alt="">
 								</div>

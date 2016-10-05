@@ -35,6 +35,7 @@ class MemberController extends Controller
 
         // 직접 작성한 게시물
         $writed_articles = Article::where('user_id', $user->id)
+                                    ->where('open', false)
                                     ->where('deleted', false)
                                     ->orderBy('id', 'desc')
                                     ->paginate(16);       
@@ -42,6 +43,7 @@ class MemberController extends Controller
         // 좋아요를 누른 게시물
         $like_articles = Article::where('like', 'LIKE', '%*'.$user->name.'*%')
                             ->where('deleted', false)
+                            ->where('open', false)
                             ->orderBy('id', 'desc') 
                             ->paginate(16);  
 
@@ -123,6 +125,7 @@ class MemberController extends Controller
         // 좋아요를 누른 게시물
         $like_articles = Article::where('like', 'LIKE', '%*'.$user->name.'*%')
                             ->where('deleted', false)
+                            ->where('open', false)
                             ->orderBy('id', 'desc') 
                             ->paginate(16);       
 
@@ -172,6 +175,7 @@ class MemberController extends Controller
         // 좋아요 게시물 개수
         $count_likes = Article::where('like', 'LIKE', '%*'.$user->name.'*%')
                             ->where('deleted', false)
+                            ->where('open', false)
                             ->orderBy('id', 'desc') 
                             ->get();   
         $count_like = count($count_likes);

@@ -32,7 +32,7 @@
 						<ul>
 							<li>
 								<span class="icon"><i class="fa fa-file-image-o" aria-hidden="true"></i></span>
-								<span class="count">{!! count($user->articles->where('deleted', 0)) !!}</span>
+								<span class="count">{!! count($user->articles->where('deleted', 0)->where('open', 0)) !!}</span>
 							</li>
 							<li>
 								<span class="icon"><i class="fa fa-heart" aria-hidden="true"></i></span>
@@ -47,7 +47,7 @@
 
 					<div class="box-article">
 						<ul>
-							@foreach($user->articles->where('deleted', 0)->reverse()->take(8) as $article)
+							@foreach($user->articles->where('deleted', 0)->where('open', 0)->reverse()->take(8) as $article)
 								<li><a href="{{ url('/articles/'.$article->id) }}"><img src="{{ url('/uploads/'.$article->image) }}" alt="{{ $article->title }}"></a></li>
 							@endforeach
 						</ul>

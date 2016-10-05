@@ -137,7 +137,7 @@
 									</div>
 								</td>
 								<td>
-									<textarea name="content" id="multi-users" cols="30" rows="10" placeholder="댓글을 남겨주세요. 타인을 향한 욕설이나 비방의 글은 제재를 당할 수 있습니다." {{ auth()->guest() ? 'disabled' : '' }}></textarea>	
+									<textarea name="content" id="multi-users" cols="30" rows="10" placeholder="{{ auth()->guest() ? '회원만 댓글을 작성할 수 있습니다. 로그인 해주세요.' : '댓글을 남겨주세요. 타인을 향한 욕설이나 비방의 글은 제재를 당할 수 있습니다.' }}" {{ auth()->guest() ? 'disabled' : '' }}></textarea>	
 									<span class="desc">'@'를 입력하면 멘션할 수 있습니다.</span>
 								</td>
 								<td>

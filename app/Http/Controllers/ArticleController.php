@@ -28,6 +28,7 @@ class ArticleController extends Controller
     function index() 
     {
     	$articles = Article::where('deleted', false)
+                            ->where('open', false)
 					    	->orderBy('created_at', 'desc')
                             ->take(15)
 					    	->get();
@@ -86,6 +87,7 @@ class ArticleController extends Controller
         if (isset($request->all) && $request->all == 'tag') {
             $tag_articles = Article::where('tag', 'like', '%'.$query.'%')
                             ->where('deleted', false)
+                            ->where('open', true)
                             ->orderBy('created_at', 'desc')
                             ->paginate(16);
             $tag_articles->setPath('/search?search_query='.$request->search_query.'&all=tag');
@@ -96,6 +98,7 @@ class ArticleController extends Controller
             $articles = Article::where('title', 'like', '%'.$query.'%')
                                 ->orWhere('body', 'like', '%'.$query.'%')
                                 ->where('deleted', false)
+                                ->where('open', true)
                                 ->orderBy('created_at', 'desc')
                                 ->paginate(16);
             $articles->setPath('/search?search_query='.$request->search_query.'&all=article');
@@ -105,23 +108,27 @@ class ArticleController extends Controller
             $articles = array();
             $users = User::where('name', 'like', '%'.$query.'%')
                                 ->where('deleted', false)
+                                ->where('open', true)
                                 ->orderBy('created_at', 'desc')
                                 ->paginate(20);
             $users->setPath('/search?search_query='.$request->search_query.'&all=user');
         } else {
             $tag_articles = Article::where('tag', 'like', '%'.$query.'%')
                             ->where('deleted', false)
+                            ->where('open', true)
                             ->orderBy('created_at', 'desc')
                             ->paginate(8);
 
             $articles = Article::where('title', 'like', '%'.$query.'%')
                                 ->orWhere('body', 'like', '%'.$query.'%')
                                 ->where('deleted', false)
+                                ->where('open', true)
                                 ->orderBy('created_at', 'desc')
                                 ->paginate(8);
 
             $users = User::where('name', 'like', '%'.$query.'%')
                                 ->where('deleted', false)
+                                ->where('open', true)
                                 ->orderBy('created_at', 'desc')
                                 ->paginate(10);
         }
@@ -140,6 +147,7 @@ class ArticleController extends Controller
     function works(Request $request) 
     {
          $articles = Article::where('deleted', false)
+                            ->where('open', false)
                             ->orderBy('created_at', 'desc')
                             ->paginate(25);
                     $articles->setPath('works');     
@@ -151,6 +159,7 @@ class ArticleController extends Controller
                 case 'A':
                     $articles = Article::where('deleted', false)
                             ->where('category',0)
+                            ->where('open', false)
                             ->orderBy('created_at', 'desc')
                             ->paginate(5);
                     $articles->setPath('works?cate='.$request->cate);    
@@ -159,6 +168,7 @@ class ArticleController extends Controller
                 case 'B':
                     $articles = Article::where('deleted', false)
                             ->where('category',1)
+                            ->where('open', false)
                             ->orderBy('created_at', 'desc')
                             ->paginate(25);
                     $articles->setPath('works?cate='.$request->cate);    
@@ -167,6 +177,7 @@ class ArticleController extends Controller
                 case 'C':
                     $articles = Article::where('deleted', false)
                             ->where('category',2)
+                            ->where('open', false)
                             ->orderBy('created_at', 'desc')
                             ->paginate(25);
                     $articles->setPath('works?cate='.$request->cate);      
@@ -175,6 +186,7 @@ class ArticleController extends Controller
                 case 'D':
                     $articles = Article::where('deleted', false)
                             ->where('category',3)
+                            ->where('open', false)
                             ->orderBy('created_at', 'desc')
                             ->paginate(25);
                     $articles->setPath('works?cate='.$request->cate);    
@@ -182,6 +194,7 @@ class ArticleController extends Controller
                     break;   
                 case 'new':
                     $articles = Article::where('deleted', false)
+                            ->where('open', false)
                             ->orderBy('created_at', 'desc')
                             ->paginate(25);
                     $articles->setPath('works?cate='.$request->cate);    
@@ -189,6 +202,7 @@ class ArticleController extends Controller
                     break;   
                 case 'hit':
                     $articles = Article::where('deleted', false)
+                            ->where('open', false)
                             ->orderBy('hit_count', 'desc')
                             ->paginate(25);
                     $articles->setPath('works?cate='.$request->cate);    
@@ -196,6 +210,7 @@ class ArticleController extends Controller
                     break;   
                 case 'like':
                     $articles = Article::where('deleted', false)
+                            ->where('open', false)
                             ->orderBy('like_count', 'desc')
                             ->paginate(25);
                     $articles->setPath('works?cate='.$request->cate);    
@@ -270,10 +285,18 @@ class ArticleController extends Controller
 
     function show($id) 
     {
+
         $article = Article::with('comments.user')->where('deleted', false)->find($id);        
     	$users = User::where('deleted',false)->get();
 
+        if ($article->open == true) {
+            if (auth()->guest() || auth()->user()->id != $article->user->id) {
+                return redirect('/works');    
+            }            
+        }
+
         if (!auth()->guest()) {
+
             $writer = User::where('name', auth()->user()->name)->first();
             $hit_list = explode(',', $article->hit);
 
@@ -300,11 +323,13 @@ class ArticleController extends Controller
         $writer_articles = Article::where('user_id', $article->user->id)
                                     ->whereNotIn('id', [$article->id])
                                     ->where('deleted', false)
+                                    ->where('open', false)
                                     ->orderBy('created_at', 'desc')
                                     ->take(6)
                                     ->get();
 
         $related_articles = Article::where('deleted', false)
+                                    ->where('open', false)
                                     ->where('category', $article->category)
                                     ->whereNotIn('id', [$id])
                                     ->orderBy('created_at', 'desc')

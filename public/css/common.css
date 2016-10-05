@@ -380,7 +380,7 @@ transition:.1s all ease-in;}
 .wrap-register .box-update .box-input .box-nickname {height:40px; margin:0 0 10px;}
 .wrap-register .box-profile .box-input input {width:202px; float: right; margin:5px 0; padding:7px; font-size:12px; background:#fff; border:1px solid #d4d4d4; color:#565656;}
 .wrap-register .box-profile .box-input div {clear: both;}
-.wrap-register .box-profile .box-input textarea {float: right; width:206px; margin:0 0 20px; display:inline-block; border:1px solid #d4d4d4; resize:none; font-size:13px; color:#565656; padding:5px; line-height:1.6;}
+.wrap-register .box-profile .box-input textarea {position:relative; z-index:1; float: right; width:206px; height:100px; min-height:100px; margin:0 0 20px; display:inline-block; border:1px solid #d4d4d4; resize:none; font-size:13px; color:#565656; padding:5px; line-height:1.6;}
 .wrap-register .box-right {position:relative;}
 .wrap-register .box-right .profile {display:block; width:100px; height:100px;}
 .wrap-register .box-right .box-required {clear: both; float:left;}
@@ -474,6 +474,9 @@ transition:.1s all ease-in;}
 .ul-like-articles li .box-etc li {float: left; padding:0 40px 0 0;}
 .ul-like-articles li .box-etc li span {font-size:14px; color:#9a9a9a;}
 .ul-like-articles li .box-etc li span.icon {padding:0 5px 0 0;}
+.ul-like-articles li.li-data .box-lock {position:absolute; width:276px; height:276px; background:rgba(0,0,0,0.5); border:3px solid #ed642c; z-index:1; -webkit-transition:.1s all ease-in; -o-transition:.1s all ease-in; transition:.1s all ease-in;}
+.ul-like-articles li.li-data .box-lock .lock {display:block; width:100px; height:100px; opacity:0.8; margin:90px auto 0;}
+.ul-like-articles li.li-data:hover .box-lock {opacity:0.8;}
 .ul-follow-users {padding:10px 0 60px; overflow: hidden;}
 .ul-follow-users .li-data {width:228px; margin:10px; padding:10px 0 0; float:left; border-right:1px solid #d4d4d4; border-bottom:2px solid #d4d4d4; box-shadow:0 0 2px rgba(0,0,0,0.3); background:#fff;}
 .ul-follow-users .li-data .box-profile .name {font-size:14px; padding:0 0 10px; color:#565656; text-align:center;}
@@ -591,4 +594,11 @@ transition:.1s all ease-in;}
 .box-upload-error {background: #f7e4e0; border: 1px solid #ecc8c1; overflow: hidden; margin:0 0 25px; padding: 15px; }
 .box-upload-error h3 {margin:0 0 20px 10px;}
 .box-upload-error li {font-size: 13px; line-height: 1.7; color: #e96f4c; padding: 0 0 0 10px;}
+
+.btn-thumbnail {cursor:pointer;}
+
+@media screen and (max-width:1250px) {
+    html, body {width:1280px;}
+    .wrap_ban {width:1280px;}
+}
 
