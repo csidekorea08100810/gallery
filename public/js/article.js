@@ -128,7 +128,7 @@ $(function(){
 	// 이미지 썸네일 미리보기
 	$('.confirm').click(function(){
 		$(".box-thumbnail #preview-pane").remove();
-		$("#preview-pane").clone().prependTo(".box-thumbnail");
+		$("#preview-pane").clone().prependTo(".box-thumbnail").addClass('btn-thumbnail');
 		$(".box-thumbnail #preview-pane").removeClass("blind");
 		$('.box-modal-crop').fadeOut();
 		$('.blackcover').fadeOut();

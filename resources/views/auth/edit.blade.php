@@ -73,7 +73,7 @@
 						</div>
 						<div>
 							<label for="">자기소개</label>
-							<textarea name="introduction" id="" cols="30" rows="5" placeholder="자기소개를 입력해주세요." maxlength="90">{{ auth()->user()->intro }}</textarea>
+							<textarea name="introduction" id="" placeholder="자기소개를 입력해주세요." maxlength="90">{{ auth()->user()->intro }}</textarea>
 						</div>
 			        </div>	
 				</div>

@@ -7,6 +7,7 @@
 		<meta property="og:title"         content="@yield('article_title')" />
 		<meta property="og:description"   content="@yield('article_content')" />
 		<meta property="og:image"         content="" />
+		
 		<title>C.GALLERY @yield('title')</title>
 		<link rel="shortcut icon" href="{{ url('images/logof.png') }}">
 		<script src="{{ url('js/jquery.2.1.4.js') }}"></script>
