@@ -597,6 +597,8 @@ transition:.1s all ease-in;}
 
 .btn-thumbnail {cursor:pointer;}
 
+.wrap-login {margin:100px 0;}
+
 @media screen and (max-width:1250px) {
     html, body {width:1280px;}
     .wrap_ban {width:1280px;}
