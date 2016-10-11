@@ -87,7 +87,7 @@ class ArticleController extends Controller
         if (isset($request->all) && $request->all == 'tag') {
             $tag_articles = Article::where('tag', 'like', '%'.$query.'%')
                             ->where('deleted', false)
-                            ->where('open', true)
+                            ->where('open', false)
                             ->orderBy('created_at', 'desc')
                             ->paginate(16);
             $tag_articles->setPath('/search?search_query='.$request->search_query.'&all=tag');
@@ -98,7 +98,7 @@ class ArticleController extends Controller
             $articles = Article::where('title', 'like', '%'.$query.'%')
                                 ->orWhere('body', 'like', '%'.$query.'%')
                                 ->where('deleted', false)
-                                ->where('open', true)
+                                ->where('open', false)
                                 ->orderBy('created_at', 'desc')
                                 ->paginate(16);
             $articles->setPath('/search?search_query='.$request->search_query.'&all=article');
@@ -108,27 +108,25 @@ class ArticleController extends Controller
             $articles = array();
             $users = User::where('name', 'like', '%'.$query.'%')
                                 ->where('deleted', false)
-                                ->where('open', true)
                                 ->orderBy('created_at', 'desc')
                                 ->paginate(20);
             $users->setPath('/search?search_query='.$request->search_query.'&all=user');
         } else {
             $tag_articles = Article::where('tag', 'like', '%'.$query.'%')
                             ->where('deleted', false)
-                            ->where('open', true)
+                            ->where('open', false)
                             ->orderBy('created_at', 'desc')
                             ->paginate(8);
 
             $articles = Article::where('title', 'like', '%'.$query.'%')
                                 ->orWhere('body', 'like', '%'.$query.'%')
                                 ->where('deleted', false)
-                                ->where('open', true)
+                                ->where('open', false)
                                 ->orderBy('created_at', 'desc')
                                 ->paginate(8);
 
             $users = User::where('name', 'like', '%'.$query.'%')
                                 ->where('deleted', false)
-                                ->where('open', true)
                                 ->orderBy('created_at', 'desc')
                                 ->paginate(10);
         }
